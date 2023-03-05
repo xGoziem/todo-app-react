@@ -1,7 +1,15 @@
+import Header from "./components/Header";
+import Sidebar from "./components/Sidebar";
+import Main from "./components/Main";
+
 const App = () => {
   return (
-    <div className="App">
-      <h1 className="semibold text-5xl text-center font-mona">Wagwan?!</h1>
+    <div className="App font-clash text-neutral-800 h-screen grid grid-rows-[1fr_13fr]">
+      <Header />
+      <main className="grid grid-cols-[1fr_4fr]">
+        <Sidebar />
+        <Main />
+      </main>
     </div>
   )
 };
