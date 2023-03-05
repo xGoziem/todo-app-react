@@ -25,6 +25,7 @@ module.exports = {
       },
       fontFamily: {
         mona: ['Mona Sans', 'sans-serif'],
+        clash: ['Clash Display', 'sans-serif'],
         grotesk: ['Space Grotesk', 'sans-serif'],
         dm: ['DM Sans', 'sans-serif'],
         bebas: ['Bebas Neue', 'cursive'],
