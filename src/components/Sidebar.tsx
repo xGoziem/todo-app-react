@@ -5,7 +5,7 @@ const Sidebar = () => {
   return (
     <aside className="bg-neutral-300 border-2 border-neutral-300 border-r-neutral-800 pt-6 space-y-10">
       <section className="mx-8 space-y-3">
-        <h3 className="font-semibold text-3xl">Home</h3>
+        <h3 className="font-semibold text-3xl text-neutral-600">Home</h3>
         
         <div className="space-y-2">
           <SidebarItem name="Inbox" icon={BsFillInboxFill} />
@@ -16,7 +16,7 @@ const Sidebar = () => {
       </section>
 
       <section className="mx-8 space-y-3">
-        <h3 className="font-semibold text-3xl">Projects</h3>
+        <h3 className="font-semibold text-3xl text-neutral-600">Projects</h3>
       </section>
     </aside>
   );
