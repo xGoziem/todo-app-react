@@ -1,5 +1,5 @@
-import Header from "./Header";
-import MenuIcon from "./MenuIcon";
+import Header from "../Header/Header";
+import MenuIcon from "../MenuIcon";
 import Task from "./Task";
 
 const Main = () => {

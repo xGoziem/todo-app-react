@@ -1,5 +1,5 @@
 import { BsFillCaretRightFill } from 'react-icons/bs';
-import MenuIcon from './MenuIcon';
+import MenuIcon from '../MenuIcon';
 
 interface PItem {
   name: string;

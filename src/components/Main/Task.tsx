@@ -1,4 +1,4 @@
-import MenuIcon from "./MenuIcon";
+import MenuIcon from "../MenuIcon";
 import { BsInfoCircleFill, BsStar, BsStarFill } from "react-icons/bs";
 
 const Task = () => {

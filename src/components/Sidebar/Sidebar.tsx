@@ -1,7 +1,7 @@
-import Header from "./Header";
+import Header from "../Header/Header";
 import HomeItem from "./HomeItem";
 import { BsFillInboxFill, BsCalendar2Day, BsCalendar2Week, BsStar, BsFillCaretRightFill } from 'react-icons/bs';
-import MenuIcon from "./MenuIcon";
+import MenuIcon from "../MenuIcon";
 import ProjectItem from "./ProjectItem";
 
 const Sidebar = () => {
