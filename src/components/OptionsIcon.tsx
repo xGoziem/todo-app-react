@@ -36,10 +36,9 @@ const OptionsIcon = ({ type }: OptionsIconType) => {
 
   const conditionalClasses = type === "task header" ? "p-2.5 hover:bg-neutral-300" : "p-1.5 hover:bg-neutral-400";
   const iconClassName = `bg-transparent rounded-full transition duration-300 cursor-pointer ${conditionalClasses}`;
-  const iconSize = type === "task header" ? "text-3xl" : "task" || "project header" ? "text-xl" : "text-lg";
-  const verticalPositioning = type === "task header" ? "top-12" : "top-8";
-  const horizontalPositioning = type === "task header" || "task" ? "right-0" : "left-0";
-  const dropdownContainerClass = `absolute z-50 ${verticalPositioning} ${horizontalPositioning}`;
+  const iconSize = type === "task header" ? "text-3xl" : type === "task" || "project header" ? "text-xl" : "text-lg";
+  const positioning = type === "task header" ? "top-12 right-0" : type === "task" ? "top-8 right-0" : "top-8 left-0";
+  const dropdownContainerClass = `absolute z-50 ${positioning}`;
   
   let dropdownObj: any;
 
