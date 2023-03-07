@@ -1,11 +1,11 @@
 import { BsFillCaretRightFill } from 'react-icons/bs';
-import MenuIcon from '../MenuIcon';
+import OptionsIcon from '../OptionsIcon';
 
-interface PItem {
+interface ProjectItemType {
   name: string;
 }
 
-const ProjectItem = ({name}: PItem) => {
+const ProjectItem = ({name}: ProjectItemType) => {
   return (
     <div className="flex items-center justify-between px-4 cursor-pointer">
       <div className="flex items-center gap-3">
@@ -13,7 +13,7 @@ const ProjectItem = ({name}: PItem) => {
         <h4 className="text-xl py-1.5">{name}</h4>
       </div>
 
-      <MenuIcon size="text-lg" />
+      <OptionsIcon size="text-lg" />
     </div>
   );
 };
