@@ -7,7 +7,7 @@ const Main = () => {
       {/* Header */}
       <div className="flex items-center justify-between border-2 border-b-neutral-400 pb-2">
         <h2 className="text-6xl font-bold">Inbox</h2>
-        <OptionsIcon size="text-3xl" />
+        <OptionsIcon type="task header" />
       </div>
 
       {/* Task Container */}

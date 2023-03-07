@@ -1,13 +1,13 @@
 import { useState, useRef, useEffect } from 'react';
-import { BsThreeDotsVertical } from 'react-icons/bs';
-import TaskHeadingOptionsDropdown from './TaskHeadingDropdown';
+import { BsThreeDotsVertical, BsPlusLg, BsCheckCircle, BsTrash, BsPencilSquare } from 'react-icons/bs';
+import Dropdown from './Dropdown';
 
 // Props type
 interface OptionsIconType {
-  size: string;
+  type: string;
 }
 
-const OptionsIcon = ({ size }: OptionsIconType) => {
+const OptionsIcon = ({ type }: OptionsIconType) => {
   const [showDropdown, setShowDropdown] = useState(false); // hold dropdown state
   const dropdownRef = useRef<HTMLDivElement>(null); // reference dropdown
   const iconRef = useRef<HTMLDivElement>(null); // reference icon
@@ -34,19 +34,45 @@ const OptionsIcon = ({ size }: OptionsIconType) => {
     setShowDropdown(!showDropdown);
   };
 
-  const iconSize = size === "text-lg" ? "p-1.5" : "text-xl" ? "p-2" : "p-3";
-  const bgOnHover = size === "text-3xl" ? "bg-neutral-300" : "bg-neutral-400";
-  const iconClassName = `bg-transparent rounded-full ${iconSize} hover:${bgOnHover} transition duration-300 cursor-pointer`;
+  const conditionalClasses = type === "task header" ? "p-2.5 hover:bg-neutral-300" : "p-1.5 hover:bg-neutral-400";
+  const iconClassName = `bg-transparent rounded-full transition duration-300 cursor-pointer ${conditionalClasses}`;
+  const iconSize = type === "task header" ? "text-3xl" : type === "task" || "project header" ? "text-xl" : "text-lg";
+  const positioning = type === "task header" ? "top-12 right-0" : type === "task" ? "top-8 right-0" : "top-8 left-0";
+  const dropdownContainerClass = `absolute z-50 ${positioning}`;
+  
+  let dropdownObj: any;
+
+  if (type === "task header") {
+    dropdownObj = {
+      options: ['Add New Task', 'Complete All Tasks', 'Delete All Tasks'],
+      optionIcons: [<BsPlusLg />, <BsCheckCircle />, <BsTrash />]
+    }
+  } else if (type === "task") {
+    dropdownObj = {
+      options: ['Edit Task', 'Delete Task'],
+      optionIcons: [<BsPencilSquare />, <BsTrash />]
+    }
+  } else if (type === "project header") {
+    dropdownObj = {
+      options: ['Add New Project', 'Delete All Projects'],
+      optionIcons: [<BsPlusLg />, <BsTrash />]
+    }
+  } else {
+    dropdownObj = {
+      options: ['Edit Project', 'Delete Project'],
+      optionIcons: [<BsPencilSquare />, <BsTrash />]
+    }
+  }
 
   return (
     <div className='relative' ref={iconRef} onClick={handleIconClick}>
       <div className={iconClassName}>
-        <BsThreeDotsVertical className={size} />
+        <BsThreeDotsVertical className={iconSize} />
       </div>
 
       {showDropdown && (
-        <div className="absolute z-50 top-10 right-0" ref={dropdownRef} onClick={event => event.stopPropagation()}>
-          <TaskHeadingOptionsDropdown />
+        <div className={dropdownContainerClass} ref={dropdownRef} onClick={event => event.stopPropagation()}>
+          <Dropdown dropdownObj={dropdownObj} />
         </div>
       )}
     </div>

@@ -20,11 +20,11 @@ const Sidebar = () => {
       <section className="mx-8 space-y-3">
         <div className="flex items-center justify-between">
           <h3 className="font-semibold text-3xl text-neutral-600">Projects</h3>
-          <OptionsIcon size="text-xl" />
+          <OptionsIcon type="project header" />
         </div>
 
         <div className="space-y-2">
-          {/* <ProjectItem name="Music" /> */}
+          <ProjectItem name="Music" />
         </div>
       </section>
     </aside>
