@@ -21,7 +21,7 @@ const Task = () => {
         <p className="text-sm pt-1.5">06/03/2023</p>
         <div className="flex items-center gap-1">
           <BsStar className="cursor-pointer" />
-          <OptionsIcon size="text-lg" />
+          <OptionsIcon type="task" />
         </div>
       </div>
     </div>

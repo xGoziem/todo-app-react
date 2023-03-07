@@ -13,7 +13,7 @@ const ProjectItem = ({name}: ProjectItemType) => {
         <h4 className="text-xl py-1.5">{name}</h4>
       </div>
 
-      <OptionsIcon size="text-lg" />
+      <OptionsIcon type="project" />
     </div>
   );
 };
