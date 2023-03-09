@@ -3,7 +3,7 @@ import { BsInfoCircle, BsInfoCircleFill, BsStar, BsStarFill } from "react-icons/
 
 const Task = () => {
   return (
-    <div className='flex items-center justify-between border-[3px] border-neutral-800 bg-neutral-300 rounded-3xl px-3 py-0.5'>
+    <div className='flex items-center justify-between border-[3px] border-neutral-800 bg-neutral-300 rounded-full px-3 py-0.5'>
       <div className="flex items-center gap-3">
         <input
           type="checkbox"

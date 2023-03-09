@@ -1,5 +1,7 @@
 import OptionsIcon from "../OptionsIcon";
 import Task from "./Task";
+import NewTaskModal from "../Modal/NewTaskModal";
+import Testing from "../Testing";
 
 const Main = () => {
   return (
@@ -13,7 +15,9 @@ const Main = () => {
       {/* Task Container */}
       <div className="py-6 px-3 space-y-4 overflow-auto custom-scrollbar">
         <Task />
+        {/* <NewTaskModal /> */}
       </div>
+      {/* <Testing /> */}
     </section>
   );
 };
