@@ -21,11 +21,11 @@ const OptionsIcon = ({ type }: OptionsIconType) => {
     };
 
     // Add event listener to the entire document to listen for clicks
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
   
     // Clean up event listener when component unmounts
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, []);
 
@@ -48,7 +48,7 @@ const OptionsIcon = ({ type }: OptionsIconType) => {
 
       {showDropdown && (
         <div className={dropdownContainerClass} ref={dropdownRef} onClick={event => event.stopPropagation()}>
-          <Dropdown type={type} />
+          <Dropdown type={type} setShowDropdown={setShowDropdown} />
         </div>
       )}
     </div>

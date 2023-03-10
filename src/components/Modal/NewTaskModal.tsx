@@ -3,7 +3,8 @@ import { TextInput, TextareaInput, DateInput, SelectInput } from '../Forms/Input
 
 const NewTaskModal = () => {
   return (
-    <div className="bg-neutral-300 max-w-3xl border-2 border-neutral-400 rounded-xl shadow-xl">
+    <div
+      className="bg-neutral-300 max-w-3xl border-2 border-neutral-400 rounded-xl shadow-xl font-clash">
       {/* Form Header */}
       <div className="flex items-center justify-between text-2xl font-semibold py-3 px-5 border-b-2 border-neutral-400">
         Add New Task
