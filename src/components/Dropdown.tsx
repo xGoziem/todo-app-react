@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { BsPlusLg, BsCheckCircle, BsTrash, BsPencilSquare } from 'react-icons/bs';
-import NewTaskModal from './Modal/NewTaskModal';
+import Modal from './Modal/Modal';
 
 interface DropdownType {
   type: string;
@@ -13,10 +13,10 @@ const Dropdown = ({ type, setShowDropdown }: DropdownType) => {
 
   useEffect(() => {
     const overlay = document.createElement('div') as HTMLDivElement;
-    overlay.className = "fixed flex items-center justify-center inset-0 bg-black/20"
+    overlay.className = "fixed flex items-center justify-center inset-0 bg-black/30"
     const modalContainer = document.createElement('div') as HTMLDivElement;
     modalContainer.onclick = (event) => event.stopPropagation();
-    ReactDOM.render(<NewTaskModal />, modalContainer);
+    ReactDOM.render(<Modal type={type} setModalVisible={setModalVisible} overlay={overlay} />, modalContainer);
     overlay.appendChild(modalContainer);
 
     if (modalVisible) {
@@ -56,7 +56,7 @@ const Dropdown = ({ type, setShowDropdown }: DropdownType) => {
   }
 
   const handleClick = (option: string) => {
-    if (option === "Add New Task") {
+    if (option === "Add New Task" || option === "Edit Task" || option === "Add New Project" || option === "Edit Project") {
       setModalVisible(true);
     }
   };

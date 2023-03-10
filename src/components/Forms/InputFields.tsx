@@ -3,6 +3,24 @@ interface TextInputType {
   label: string;
 }
 
+interface TextAreaInputType {
+  name: string;
+  label: string;
+}
+
+interface DateInputType {
+  name: string;
+  label: string;
+}
+
+interface SelectInputType {
+  name: string;
+  label: string;
+  options: string[];
+  selected: string;
+}
+
+// Text Input Field Component
 export const TextInput = ({ name, label }: TextInputType) => {
   return (
     <div className='space-y-1'>
@@ -17,11 +35,7 @@ export const TextInput = ({ name, label }: TextInputType) => {
   );
 };
 
-interface TextAreaInputType {
-  name: string;
-  label: string;
-}
-
+// Textarea Input Field Component
 export const TextareaInput = ({ name, label }: TextAreaInputType) => {
   return (
     <div className='space-y-1'>
@@ -35,11 +49,7 @@ export const TextareaInput = ({ name, label }: TextAreaInputType) => {
   );
 };
 
-interface DateInputType {
-  name: string;
-  label: string;
-}
-
+// Date Input Field Component
 export const DateInput = ({ name, label }: DateInputType) => {
   return (
     <div className='space-y-1'>
@@ -54,13 +64,7 @@ export const DateInput = ({ name, label }: DateInputType) => {
   );
 };
 
-interface SelectInputType {
-  name: string;
-  label: string;
-  options: string[];
-  selected: string;
-}
-
+// Select Input Field Component
 export const SelectInput = ({name, label, options, selected}: SelectInputType) => {
   return (
     <div className='space-y-1'>

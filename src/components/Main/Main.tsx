@@ -1,12 +1,10 @@
 import OptionsIcon from "../OptionsIcon";
 import Task from "./Task";
-import NewTaskModal from "../Modal/NewTaskModal";
-import Testing from "../Testing";
 
 const Main = () => {
   return (
     <section className="bg-neutral-200 px-24 pt-8 h-[calc(100vh-3rem)] grid grid-rows-[1fr_9fr]">
-      {/* Header */}
+      {/* Task Header */}
       <div className="flex items-center justify-between border-2 border-b-neutral-400 pb-2">
         <h2 className="text-6xl font-bold">Inbox</h2>
         <OptionsIcon type="task header" />
@@ -15,9 +13,7 @@ const Main = () => {
       {/* Task Container */}
       <div className="py-6 px-3 space-y-4 overflow-auto custom-scrollbar">
         <Task />
-        {/* <NewTaskModal /> */}
       </div>
-      {/* <Testing /> */}
     </section>
   );
 };
