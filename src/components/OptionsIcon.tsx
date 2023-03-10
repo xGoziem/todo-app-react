@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { BsThreeDotsVertical, BsPlusLg, BsCheckCircle, BsTrash, BsPencilSquare } from 'react-icons/bs';
+import { BsThreeDotsVertical } from 'react-icons/bs';
 import Dropdown from './Dropdown';
 
 // Props type
@@ -21,11 +21,11 @@ const OptionsIcon = ({ type }: OptionsIconType) => {
     };
 
     // Add event listener to the entire document to listen for clicks
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
   
     // Clean up event listener when component unmounts
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, []);
 
@@ -39,30 +39,6 @@ const OptionsIcon = ({ type }: OptionsIconType) => {
   const iconSize = type === "task header" ? "text-3xl" : type === "task" || "project header" ? "text-xl" : "text-lg";
   const positioning = type === "task header" ? "top-12 right-0" : type === "task" ? "top-8 right-0" : "top-8 left-0";
   const dropdownContainerClass = `absolute z-50 ${positioning}`;
-  
-  let dropdownObj: any;
-
-  if (type === "task header") {
-    dropdownObj = {
-      options: ['Add New Task', 'Complete All Tasks', 'Delete All Tasks'],
-      optionIcons: [<BsPlusLg />, <BsCheckCircle />, <BsTrash />]
-    }
-  } else if (type === "task") {
-    dropdownObj = {
-      options: ['Edit Task', 'Delete Task'],
-      optionIcons: [<BsPencilSquare />, <BsTrash />]
-    }
-  } else if (type === "project header") {
-    dropdownObj = {
-      options: ['Add New Project', 'Delete All Projects'],
-      optionIcons: [<BsPlusLg />, <BsTrash />]
-    }
-  } else {
-    dropdownObj = {
-      options: ['Edit Project', 'Delete Project'],
-      optionIcons: [<BsPencilSquare />, <BsTrash />]
-    }
-  }
 
   return (
     <div className='relative' ref={iconRef} onClick={handleIconClick}>
@@ -72,7 +48,7 @@ const OptionsIcon = ({ type }: OptionsIconType) => {
 
       {showDropdown && (
         <div className={dropdownContainerClass} ref={dropdownRef} onClick={event => event.stopPropagation()}>
-          <Dropdown dropdownObj={dropdownObj} />
+          <Dropdown type={type} setShowDropdown={setShowDropdown} />
         </div>
       )}
     </div>
