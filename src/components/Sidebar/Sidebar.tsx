@@ -1,5 +1,6 @@
+import { BsFillInboxFill, BsCalendar2Day, BsCalendar2Week, BsStar } from 'react-icons/bs';
+
 import HomeItem from "./HomeItem";
-import { BsFillInboxFill, BsCalendar2Day, BsCalendar2Week, BsStar, BsFillCaretRightFill } from 'react-icons/bs';
 import OptionsIcon from "../OptionsIcon";
 import ProjectItem from "./ProjectItem";
 

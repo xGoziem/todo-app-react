@@ -1,11 +1,11 @@
 import { IconType } from "react-icons";
 
-interface HomeItemType {
+interface Props {
   name: string;
   icon: IconType;
 }
 
-const HomeItem = ({ name, icon }: HomeItemType) => {
+const HomeItem = ({ name, icon }: Props) => {
   const Icon = icon; // Capitalize the variable name to use it as a component
   const itemClassName = name === 'Inbox' ? "flex items-center justify-between bg-neutral-400 px-4 cursor-pointer rounded-xl" : "flex items-center justify-between px-4 cursor-pointer hover:bg-neutral-200 rounded-xl";
   const itemNameClassName = name === 'Inbox' ? "text-xl pt-1.5 pb-1" : "text-xl py-1.5";

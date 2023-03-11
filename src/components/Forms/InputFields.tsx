@@ -1,19 +1,19 @@
-interface TextInputType {
+interface TextInputProps {
   name: string;
   label: string;
 }
 
-interface TextAreaInputType {
+interface TextAreaInputProps {
   name: string;
   label: string;
 }
 
-interface DateInputType {
+interface DateInputProps {
   name: string;
   label: string;
 }
 
-interface SelectInputType {
+interface SelectInputProps {
   name: string;
   label: string;
   options: string[];
@@ -21,7 +21,7 @@ interface SelectInputType {
 }
 
 // Text Input Field Component
-export const TextInput = ({ name, label }: TextInputType) => {
+export const TextInput = ({ name, label }: TextInputProps) => {
   return (
     <div className='space-y-1'>
       <label htmlFor={name} className='text-xl'>{label}</label>
@@ -36,7 +36,7 @@ export const TextInput = ({ name, label }: TextInputType) => {
 };
 
 // Textarea Input Field Component
-export const TextareaInput = ({ name, label }: TextAreaInputType) => {
+export const TextareaInput = ({ name, label }: TextAreaInputProps) => {
   return (
     <div className='space-y-1'>
       <label htmlFor={name} className='text-xl'>{label}</label>
@@ -50,7 +50,7 @@ export const TextareaInput = ({ name, label }: TextAreaInputType) => {
 };
 
 // Date Input Field Component
-export const DateInput = ({ name, label }: DateInputType) => {
+export const DateInput = ({ name, label }: DateInputProps) => {
   return (
     <div className='space-y-1'>
       <label htmlFor="date" className='text-xl'>Due Date</label>
@@ -65,7 +65,7 @@ export const DateInput = ({ name, label }: DateInputType) => {
 };
 
 // Select Input Field Component
-export const SelectInput = ({name, label, options, selected}: SelectInputType) => {
+export const SelectInput = ({name, label, options, selected}: SelectInputProps) => {
   return (
     <div className='space-y-1'>
       <label htmlFor={name} className='text-xl'>{label}</label>

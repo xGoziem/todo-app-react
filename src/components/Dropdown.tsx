@@ -1,38 +1,52 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Dispatch, SetStateAction } from 'react';
 import ReactDOM from 'react-dom';
+
 import { BsPlusLg, BsCheckCircle, BsTrash, BsPencilSquare } from 'react-icons/bs';
+
 import Modal from './Modal/Modal';
 
-interface DropdownType {
+interface Props {
   type: string;
-  setShowDropdown: React.Dispatch<React.SetStateAction<boolean>>;
+  setDropdownVisible: Dispatch<SetStateAction<boolean>>;
 }
 
-const Dropdown = ({ type, setShowDropdown }: DropdownType) => {
+const Dropdown = ({ type, setDropdownVisible }: Props) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
+    // Create the overlay
     const overlay = document.createElement('div') as HTMLDivElement;
     overlay.className = "fixed flex items-center justify-center inset-0 bg-black/30"
+    
+    // Create modal container and attach modal to it
     const modalContainer = document.createElement('div') as HTMLDivElement;
     modalContainer.onclick = (event) => event.stopPropagation();
-    ReactDOM.render(<Modal type={type} setModalVisible={setModalVisible} overlay={overlay} />, modalContainer);
+    const modal = <Modal
+      type={type}
+      setModalVisible={setModalVisible}
+      overlay={overlay}
+    />;
+    ReactDOM.render(modal, modalContainer);
+    
+    // Append modal container to overlay
     overlay.appendChild(modalContainer);
 
+    // Show overlay and make remove dropdown if modal visibility is true
     if (modalVisible) {
       document.body.appendChild(overlay);
-      setShowDropdown(false);
+      setDropdownVisible(false);
     }
 
     const removeOverlay = () => {
       document.body.removeChild(overlay);
     };
 
+    // Remove overlay (and modal) if the overlay (not including modal) is clicked
     overlay.addEventListener('click', removeOverlay);
   }, [modalVisible]);
 
+  // Determine dropdpwn content
   let dropdownObj: any;
-
   if (type === "task header") {
     dropdownObj = {
       options: ['Add New Task', 'Complete All Tasks', 'Delete All Tasks'],

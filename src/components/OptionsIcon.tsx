@@ -1,39 +1,39 @@
 import { useState, useRef, useEffect } from 'react';
+
 import { BsThreeDotsVertical } from 'react-icons/bs';
+
 import Dropdown from './Dropdown';
 
 // Props type
-interface OptionsIconType {
+interface Props {
   type: string;
 }
 
-const OptionsIcon = ({ type }: OptionsIconType) => {
-  const [showDropdown, setShowDropdown] = useState(false); // hold dropdown state
-  const dropdownRef = useRef<HTMLDivElement>(null); // reference dropdown
-  const iconRef = useRef<HTMLDivElement>(null); // reference icon
+const OptionsIcon = ({ type }: Props) => {
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const iconRef = useRef<HTMLDivElement>(null);
 
-  // useEffect hook to close dropdown when anywhere apart from the dropdown menu is clicked
   useEffect(() => {
+    // If dropdown is visible, remove it when anywhere apart from the dropdown is clicked
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node) && iconRef.current && !iconRef.current.contains(event.target as Node)) {
-        setShowDropdown(false);
+        setDropdownVisible(false);
       }
     };
 
-    // Add event listener to the entire document to listen for clicks
     document.addEventListener("click", handleClickOutside);
   
-    // Clean up event listener when component unmounts
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
 
-  // Show or hide dropdown
   const handleIconClick = () => {
-    setShowDropdown(!showDropdown);
+    setDropdownVisible(!dropdownVisible);
   };
 
+  // Determine classNames
   const conditionalClasses = type === "task header" ? "p-2.5 hover:bg-neutral-300" : "p-1.5 hover:bg-neutral-400";
   const iconClassName = `bg-transparent rounded-full transition duration-300 cursor-pointer ${conditionalClasses}`;
   const iconSize = type === "task header" ? "text-3xl" : type === "task" || "project header" ? "text-xl" : "text-lg";
@@ -46,9 +46,14 @@ const OptionsIcon = ({ type }: OptionsIconType) => {
         <BsThreeDotsVertical className={iconSize} />
       </div>
 
-      {showDropdown && (
-        <div className={dropdownContainerClass} ref={dropdownRef} onClick={event => event.stopPropagation()}>
-          <Dropdown type={type} setShowDropdown={setShowDropdown} />
+      {/* If dropdown is visible, show the required options */}
+      {dropdownVisible && (
+        <div
+          className={dropdownContainerClass}
+          ref={dropdownRef}
+          onClick={event => event.stopPropagation()}
+        >
+          <Dropdown type={type} setDropdownVisible={setDropdownVisible} />
         </div>
       )}
     </div>

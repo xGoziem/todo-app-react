@@ -1,13 +1,14 @@
 import { BsXCircle } from 'react-icons/bs';
+
 import { NewTaskModal } from './ModalContent';
 
-interface ModalType {
+interface Props {
   type: string;
   setModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
   overlay: HTMLDivElement;
 }
 
-const Modal = ({ type, setModalVisible, overlay }: ModalType) => {
+const Modal = ({ type, setModalVisible, overlay }: Props) => {
   // Determine Modal Header, Modal Content Component and Modal Footer
   const modalHeader = type === "task header" ? "Add New Task" : type === "task" ? "Edit Task" : type === "project header" ? "Add New Project" : "Edit Project";
   const ModalContent = type === "task header" ? NewTaskModal : type === "task" ? null : type === "project header" ? null : null;

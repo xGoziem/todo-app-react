@@ -1,5 +1,6 @@
+import { BsInfoCircle, BsStar, BsStarFill } from "react-icons/bs";
+
 import OptionsIcon from "../OptionsIcon";
-import { BsInfoCircle, BsInfoCircleFill, BsStar, BsStarFill } from "react-icons/bs";
 
 const Task = () => {
   return (

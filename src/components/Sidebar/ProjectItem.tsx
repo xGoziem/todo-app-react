@@ -1,11 +1,12 @@
 import { BsFillCaretRightFill } from 'react-icons/bs';
+
 import OptionsIcon from '../OptionsIcon';
 
-interface ProjectItemType {
+interface Props {
   name: string;
 }
 
-const ProjectItem = ({name}: ProjectItemType) => {
+const ProjectItem = ({name}: Props) => {
   return (
     <div className="flex items-center justify-between px-4 cursor-pointer">
       <div className="flex items-center gap-3">
