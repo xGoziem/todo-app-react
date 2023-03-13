@@ -16,7 +16,7 @@ interface Project {
 }
 
 const App = () => {
-
+  const [projects, setProjects] = useState<Project>({inbox: []})
 
   return (
     <div className="App font-clash text-neutral-800 fill-neutral-800 grid grid-rows-[3rem_calc(100vh-3rem)] h-screen">
