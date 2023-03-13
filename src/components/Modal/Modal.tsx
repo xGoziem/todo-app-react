@@ -58,7 +58,6 @@ const Modal = ({type, setModalVisible, titleInputRef, overlay }: Props) => {
       {
         ModalContent &&
         <ModalContent
-          formValues={formValues}
           setFormValues={setFormValues}
           titleInputRef={titleInputRef}
         />

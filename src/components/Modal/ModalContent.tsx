@@ -9,13 +9,12 @@ interface FormValues {
 }
 
 interface Props {
-  formValues: FormValues;
   setFormValues: Dispatch<SetStateAction<FormValues>>;
   titleInputRef: RefObject<HTMLInputElement>;
 }
 
 // Input Fields Component for New Task Modal
-export const NewTaskModal = ({ formValues, setFormValues, titleInputRef }: Props) => {
+export const NewTaskModal = ({ setFormValues, titleInputRef }: Props) => {
   useEffect(() => {
     if (titleInputRef.current) {
       titleInputRef.current.focus();
