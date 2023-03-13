@@ -1,4 +1,4 @@
-import { useState, useEffect, Dispatch, SetStateAction } from 'react';
+import { useState, useRef, useEffect, Dispatch, SetStateAction } from 'react';
 import ReactDOM from 'react-dom';
 
 import { BsPlusLg, BsCheckCircle, BsTrash, BsPencilSquare } from 'react-icons/bs';
@@ -12,6 +12,7 @@ interface Props {
 
 const Dropdown = ({ type, setDropdownVisible }: Props) => {
   const [modalVisible, setModalVisible] = useState(false);
+  const titleInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     // Create the overlay
@@ -24,6 +25,7 @@ const Dropdown = ({ type, setDropdownVisible }: Props) => {
     const modal = <Modal
       type={type}
       setModalVisible={setModalVisible}
+      titleInputRef={titleInputRef}
       overlay={overlay}
     />;
     ReactDOM.render(modal, modalContainer);

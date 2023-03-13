@@ -1,4 +1,4 @@
-import { FormEvent, useState, Dispatch, SetStateAction } from 'react';
+import { FormEvent, useState, Dispatch, SetStateAction,RefObject } from 'react';
 import { BsXCircle } from 'react-icons/bs';
 
 import { NewTaskModal } from './ModalContent';
@@ -6,10 +6,11 @@ import { NewTaskModal } from './ModalContent';
 interface Props {
   type: string;
   setModalVisible: Dispatch<SetStateAction<boolean>>;
+  titleInputRef: RefObject<HTMLInputElement>;
   overlay: HTMLDivElement;
 }
 
-const Modal = ({ type, setModalVisible, overlay }: Props) => {
+const Modal = ({type, setModalVisible, titleInputRef, overlay }: Props) => {
   const [formValues, setFormValues] = useState({
     title: '',
     description: '',
@@ -59,6 +60,7 @@ const Modal = ({ type, setModalVisible, overlay }: Props) => {
         <ModalContent
           formValues={formValues}
           setFormValues={setFormValues}
+          titleInputRef={titleInputRef}
         />
       }
 

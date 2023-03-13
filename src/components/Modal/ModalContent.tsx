@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, ChangeEvent } from "react";
+import { useEffect ,Dispatch, SetStateAction, ChangeEvent, RefObject } from "react";
 
 interface FormValues {
   title: string;
@@ -11,10 +11,18 @@ interface FormValues {
 interface Props {
   formValues: FormValues;
   setFormValues: Dispatch<SetStateAction<FormValues>>;
+  titleInputRef: RefObject<HTMLInputElement>;
 }
 
 // Input Fields Component for New Task Modal
-export const NewTaskModal = ({ formValues, setFormValues }: Props) => {
+export const NewTaskModal = ({ formValues, setFormValues, titleInputRef }: Props) => {
+  useEffect(() => {
+    if (titleInputRef.current) {
+      titleInputRef.current.focus();
+    }
+  }, []);
+  
+
   const projectOptions = ['inbox'];
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -33,6 +41,7 @@ export const NewTaskModal = ({ formValues, setFormValues }: Props) => {
         <div className='space-y-1'>
           <label htmlFor='title' className='text-xl'>Title</label>
           <input
+            ref={titleInputRef}
             type="text"
             name='title'
             id='title'
